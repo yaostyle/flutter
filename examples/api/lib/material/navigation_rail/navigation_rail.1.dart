@@ -13,9 +13,8 @@ class NavigationRailExampleApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      theme: ThemeData(useMaterial3: true),
-      home: const NavRailExample(),
+    return const MaterialApp(
+      home: NavRailExample(),
     );
   }
 }
@@ -118,12 +117,12 @@ class _NavRailExampleState extends State<NavRailExample> {
                     selected: <NavigationRailLabelType>{
                       labelType
                     },
-                    onSelectionChanged:
-                        (Set<NavigationRailLabelType> newSelection) {
+                    onSelectionChanged: (Set<NavigationRailLabelType> newSelection) {
                       setState(() {
                         labelType = newSelection.first;
                       });
-                    }),
+                    },
+                  ),
                   const SizedBox(height: 20),
                   Text('Group alignment: $groupAlignment'),
                   const SizedBox(height: 10),
@@ -149,26 +148,27 @@ class _NavRailExampleState extends State<NavRailExample> {
                       setState(() {
                         groupAlignment = newSelection.first;
                       });
-                    }),
+                    },
+                  ),
                   const SizedBox(height: 20),
                   SwitchListTile(
-                  title: Text(showLeading ? 'Hide Leading' : 'Show Leading'),
-                  value: showLeading,
-                  onChanged: (bool _) {
-                    setState(() {
-                      showLeading = !showLeading;
-                    });
-                  },
-                ),
-                SwitchListTile(
-                  title: Text(showTrailing ? 'Hide Trailing' : 'Show Trailing'),
-                  value: showTrailing,
-                  onChanged: (bool _) {
-                    setState(() {
-                      showTrailing = !showTrailing;
-                    });
-                  },
-                ),
+                    title: Text(showLeading ? 'Hide Leading' : 'Show Leading'),
+                    value: showLeading,
+                    onChanged: (bool value) {
+                      setState(() {
+                        showLeading = value;
+                      });
+                    },
+                  ),
+                  SwitchListTile(
+                    title: Text(showTrailing ? 'Hide Trailing' : 'Show Trailing'),
+                    value: showTrailing,
+                    onChanged: (bool value) {
+                      setState(() {
+                        showTrailing = value;
+                      });
+                    },
+                  ),
                 ],
               ),
             ),
